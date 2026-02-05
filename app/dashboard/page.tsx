@@ -10,6 +10,7 @@ type Hotel = {
   provincia: string
   ciudad: string
   descuento: string
+  telefono: string
   activo: boolean
 }
 
@@ -132,6 +133,7 @@ export default function Dashboard() {
                 <tr>
                   <th className="p-5">Nombre</th>
                   <th className="p-5">Ubicación</th>
+                  <th className="p-5">Teléfono</th>
                   <th className="p-5">Descuento</th>
                   <th className="p-5">Estado</th>
                   <th className="p-5 text-right">Acciones</th>
@@ -147,6 +149,10 @@ export default function Dashboard() {
                         <div className="text-xs text-gray-400">{hotel.ciudad || 'Capital'}</div>
                     </td>
 
+                    <td className="p-5 text-gray-600 text-sm">
+                        {hotel.telefono || '-'}
+                    </td>
+
                     <td className="p-5">
                       <span className="bg-green-100 text-green-700 px-3 py-1 rounded-full text-xs font-bold border border-green-200">
                         {hotel.descuento}
@@ -159,19 +165,19 @@ export default function Dashboard() {
                     </td>
                     <td className="p-5 text-right space-x-2">
                       <button 
-  onClick={() => router.push(`/dashboard/editar/${hotel.id}`)}
-  className="text-blue-600 hover:text-blue-800 text-sm font-medium hover:bg-blue-50 px-3 py-1.5 rounded transition-colors"
->
-  Editar
-</button>
+                          onClick={() => router.push(`/dashboard/editar/${hotel.id}`)}
+                          className="bg-slate-100 text-slate-600 hover:bg-blue-100 hover:text-blue-700 px-4 py-2 rounded-lg text-sm font-semibold transition-colors border border-slate-200"
+                        >
+                          Editar
+                        </button>
                       
                       {/* BOTÓN BORRAR CONECTADO */}
                       <button 
-                        onClick={() => borrarHotel(hotel.id, hotel.nombre)}
-                        className="text-red-500 hover:text-red-700 text-sm font-medium hover:bg-red-50 px-3 py-1.5 rounded transition-colors"
-                      >
-                        Borrar
-                      </button>
+                          onClick={() => borrarHotel(hotel.id, hotel.nombre)}
+                          className="bg-gray-50 text-gray-500 hover:bg-red-100 hover:text-red-700 px-4 py-2 rounded-lg text-sm font-semibold transition-colors border border-gray-200"
+                        >
+                          Borrar
+                        </button>
                     </td>
                   </tr>
                 ))}
